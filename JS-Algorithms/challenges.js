@@ -13,9 +13,26 @@ Invoking "readableTime(3690)" should return "01:01:30" (HH:MM:SS)
 ***** */
 
 const readableTime = (seconds) => {
-  // YOUR CODE HERE...
+  let minutes = 0;
+  let hours = 0;
+
+  minutes = Math.floor(seconds / 60); //Division always returns a float number, so I need to round it down
+  seconds = seconds % 60; // The residual from dividing the seconds 
+
+
+  if (minutes >= 60) { //Applying the same logic if there are over 60 minutes, 
+    hours = Math.floor(minutes / 60);
+    minutes = minutes % 60;
+  }
+
+
+  //Manually formatting string, adding 0 if necessary
+  result = `${hours > 9 ? hours : `0${hours}`}:${minutes > 9 ? minutes : `0${minutes}`}:${seconds > 9 ? seconds : `0${seconds}`}`
+  console.log(result)
+  return result
 };
 
+readableTime(3690);
 readableTime(458);
 readableTime(3690);
 readableTime(7293);
