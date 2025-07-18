@@ -17,26 +17,26 @@ const readableTime = (seconds) => {
   let hours = 0;
 
   minutes = Math.floor(seconds / 60); //Division always returns a float number, so I need to round it down
-  seconds = seconds % 60; // The residual from dividing the seconds 
+  seconds = seconds % 60; // The residual from dividing the seconds
 
-
-  if (minutes >= 60) { //Applying the same logic if there are over 60 minutes, 
+  if (minutes >= 60) {
+    //Applying the same logic if there are over 60 minutes,
     hours = Math.floor(minutes / 60);
     minutes = minutes % 60;
   }
 
-
   //Manually formatting string, adding 0 if necessary
-  result = `${hours > 9 ? hours : `0${hours}`}:${minutes > 9 ? minutes : `0${minutes}`}:${seconds > 9 ? seconds : `0${seconds}`}`
-  console.log(result)
-  return result
+  result = `${hours > 9 ? hours : `0${hours}`}:${
+    minutes > 9 ? minutes : `0${minutes}`
+  }:${seconds > 9 ? seconds : `0${seconds}`}`;
+  console.log(result);
+  return result;
 };
 
-readableTime(3690);
-readableTime(458);
-readableTime(3690);
-readableTime(7293);
-readableTime(32420);
+// readableTime(458);
+// readableTime(3690);
+// readableTime(7293);
+// readableTime(32420);
 
 /* *****
 Challenge 2
@@ -58,8 +58,21 @@ Invoking "circularArray(2)" should return "["Island", "Japan", "Israel", "German
 const COUNTRY_NAMES = ["Germany", "Norway", "Island", "Japan", "Israel"];
 
 const circularArray = (index) => {
-  // YOUR CODE HERE...
+  if (index >= COUNTRY_NAMES.length) {
+    //Check if the index is bigger than the array, if it is then it loops
+    index = index - COUNTRY_NAMES.length;
+    console.log(index);
+  }
+
+  //Slice the array into two parts
+  const firstHalf = COUNTRY_NAMES.slice(0, index);
+  const secondHalf = COUNTRY_NAMES.slice(index, COUNTRY_NAMES.length);
+  //Rearrange the parts of the array
+  const newArray = [...secondHalf, ...firstHalf];
+  console.log(newArray)
+  return newArray;
 };
+
 
 circularArray(2);
 circularArray(3);
