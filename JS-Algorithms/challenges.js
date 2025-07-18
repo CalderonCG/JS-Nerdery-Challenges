@@ -58,7 +58,7 @@ Invoking "circularArray(2)" should return "["Island", "Japan", "Israel", "German
 const COUNTRY_NAMES = ["Germany", "Norway", "Island", "Japan", "Israel"];
 
 const circularArray = (index) => {
-  if (index >= COUNTRY_NAMES.length) {
+  while (index >= COUNTRY_NAMES.length) {
     //Check if the index is bigger than the array, if it is then it loops
     index = index - COUNTRY_NAMES.length;
   }
@@ -177,10 +177,11 @@ const fibIndex = (n) => {
   // Building fibonacci array
   let i = 1;
   let fibonacci = [0, 1]; //First 2 values
-  let newDigit = 0 //Storing the new value
+  let newDigit = 0; //Storing the new value
   //Validation to check if the length equals the number passed
   while (newDigit.toString().length != n) {
-    newDigit = fibonacci[fibonacci.length - 2] + fibonacci[fibonacci.length - 1]; //Adding the 2 last digits
+    newDigit =
+      fibonacci[fibonacci.length - 2] + fibonacci[fibonacci.length - 1]; //Adding the 2 last digits
     fibonacci = [...fibonacci, newDigit]; //Adding the digit to the array
     i++;
   }
