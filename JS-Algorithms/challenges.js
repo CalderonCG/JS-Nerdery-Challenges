@@ -61,7 +61,6 @@ const circularArray = (index) => {
   if (index >= COUNTRY_NAMES.length) {
     //Check if the index is bigger than the array, if it is then it loops
     index = index - COUNTRY_NAMES.length;
-    console.log(index);
   }
 
   //Slice the array into two parts
@@ -100,11 +99,22 @@ The last 3 digits for the sum of powers from 1 to 10 is "317"
 ***** */
 
 const ownPower = (number, lastDigits) => {
-  // YOUR CODE HERE...
+  debugger
+  let i = 1;
+  let sum = 0;
+  while (i <= number) {
+    sum += Math.pow(i, i);
+    i++;
+  }
+  const final = BigInt(sum)
+  const result = final.toString();
+  const output = result.slice(result.length - lastDigits);
+  console.log(output)
+  return output
 };
 
-ownPower(10, 3);
-ownPower(12, 7);
+// ownPower(10, 3);
+// ownPower(12, 7);
 ownPower(21, 12);
 
 /* *****
