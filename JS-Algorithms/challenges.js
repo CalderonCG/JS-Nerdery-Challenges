@@ -68,10 +68,9 @@ const circularArray = (index) => {
   const secondHalf = COUNTRY_NAMES.slice(index, COUNTRY_NAMES.length);
   //Rearrange the parts of the array
   const newArray = [...secondHalf, ...firstHalf];
-  console.log(newArray)
+  console.log(newArray);
   return newArray;
 };
-
 
 circularArray(2);
 circularArray(3);
@@ -99,22 +98,21 @@ The last 3 digits for the sum of powers from 1 to 10 is "317"
 ***** */
 
 const ownPower = (number, lastDigits) => {
-  debugger
   let i = 1;
   let sum = 0;
-  while (i <= number) {
+  while (i <= number) { //For every number I add the power i ^ i
     sum += Math.pow(i, i);
     i++;
   }
-  const final = BigInt(sum)
-  const result = final.toString();
-  const output = result.slice(result.length - lastDigits);
-  console.log(output)
-  return output
+  const final = BigInt(sum); //Convert to bigInt, since big numbers obove 18 turns into scientific notation
+  const result = final.toString(); //Conver the result to string
+  const output = result.slice(result.length - lastDigits); //Slice the last digits of the string
+  console.log(output);
+  return output;
 };
 
-// ownPower(10, 3);
-// ownPower(12, 7);
+ownPower(10, 3);
+ownPower(12, 7);
 ownPower(21, 12);
 
 /* *****
@@ -135,7 +133,24 @@ Since 10! === 3628800 and you sum 3 + 6 + 2 + 8 + 8 + 0 + 0
 ***** */
 
 const digitSum = (n) => {
-  // YOUR CODE HERE...
+  let sum = 0;
+  let i = BigInt(1); //I need to use big int from the beginning, if I parse just the result then the digits wont be precise
+  let factorial = BigInt(1);
+  while (i <= n) { //Basic factorial function with the structure 1x2x3...xn
+    factorial *= i;
+    i++;
+  }
+
+  
+  result = factorial.toString(); // Convert the BigInt to string
+  const digits = result.split(""); //Make an array of digits
+
+  //Add each element of the array
+  digits.forEach((element) => {
+    sum += parseInt(element);
+  });
+
+  return sum;
 };
 
 digitSum(10);
