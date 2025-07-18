@@ -100,7 +100,8 @@ The last 3 digits for the sum of powers from 1 to 10 is "317"
 const ownPower = (number, lastDigits) => {
   let i = 1;
   let sum = 0;
-  while (i <= number) { //For every number I add the power i ^ i
+  while (i <= number) {
+    //For every number I add the power i ^ i
     sum += Math.pow(i, i);
     i++;
   }
@@ -136,12 +137,12 @@ const digitSum = (n) => {
   let sum = 0;
   let i = BigInt(1); //I need to use big int from the beginning, if I parse just the result then the digits wont be precise
   let factorial = BigInt(1);
-  while (i <= n) { //Basic factorial function with the structure 1x2x3...xn
+  while (i <= n) {
+    //Basic factorial function with the structure 1x2x3...xn
     factorial *= i;
     i++;
   }
 
-  
   result = factorial.toString(); // Convert the BigInt to string
   const digits = result.split(""); //Make an array of digits
 
@@ -173,13 +174,25 @@ Because the 12th index in the Fibonacci sequence is 144, and 144 has three digit
 ***** */
 
 const fibIndex = (n) => {
-  // YOUR CODE HERE...
+  // Building fibonacci array
+  let i = 1;
+  let fibonacci = [0, 1]; //First 2 values
+  let newDigit = 0 //Storing the new value
+  //Validation to check if the length equals the number passed
+  while (newDigit.toString().length != n) {
+    newDigit = fibonacci[fibonacci.length - 2] + fibonacci[fibonacci.length - 1]; //Adding the 2 last digits
+    fibonacci = [...fibonacci, newDigit]; //Adding the digit to the array
+    i++;
+  }
+  console.log(i);
+  //When the lenght equals the number, return that index
+  return i;
 };
 
 fibIndex(3);
-fibIndex(5);
-fibIndex(12);
-fibIndex(15);
+// fibIndex(5);
+// fibIndex(12);
+// fibIndex(15);
 
 exports.readableTime = readableTime;
 exports.circularArray = circularArray;
